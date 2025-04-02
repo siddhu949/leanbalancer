@@ -1,0 +1,17 @@
+# Ignore binary files
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Ignore build directories
+/bin/
+/obj/
+
+# Ignore Go module files
+/vendor/
+
+# Ignore IDE specific files
+.vscode/
+.idea/
