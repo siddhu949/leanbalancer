@@ -1,0 +1,39 @@
+.container {
+    padding: 20px;
+    transition: background 0.5s, color 0.5s;
+  }
+  
+  .container.light {
+    background-color: #ffffff;
+    color: #000;
+  }
+  
+  .container.dark {
+    background-color: #1a1a2e;
+    color: #fff;
+  }
+  
+  .theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .theme-toggle:hover {
+    transform: scale(1.2);
+  }
+  
+  .time {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fade 2s infinite;
+  }
+  
+  @keyframes fade {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  

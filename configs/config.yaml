@@ -1,0 +1,21 @@
+server:
+  port: 8080  # LeanBalancer server port
+  metrics_port: 9090  # Prometheus metrics port
+
+load_balancer:
+  algorithm: "round_robin"  # Load balancing strategy: round_robin, least_connections, ip_hash
+  timeout: 5s  # Timeout for backend requests
+
+firewall:
+  enabled: true
+  blocked_ips:
+    - "192.168.1.100"
+    - "10.0.0.1"
+
+health_check:
+  enabled: true
+  interval: 5s
+  backends:
+    - "http://localhost:9001"
+    - "http://localhost:9002"
+    - "http://localhost:9003"
