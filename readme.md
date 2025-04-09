@@ -190,7 +190,7 @@ No dropped connections during exit.
 
 🧾 License
 
--MIT License © 2025 @siddhu949
+MIT License © 2025 @siddhu949
 
 
 🤝 Contribute
