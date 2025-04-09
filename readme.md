@@ -60,8 +60,7 @@ git clone https://github.com/siddhu949/leanbalancer.git
 cd leanbalancer
 2️⃣ Install Dependencies
 bash
-Copy
-Edit
+
 go mod tidy
 3️⃣ Start Sample Backends
 bash
@@ -72,8 +71,6 @@ BACKEND_ID=2 BACKEND_PORT=9002 go run examples/backend.go
 BACKEND_ID=3 BACKEND_PORT=9003 go run examples/backend.go
 4️⃣ Start LeanBalancer
 bash
-Copy
-Edit
 go run cmd/main.go
 🌐 Available Routes
 Route	Method	Description
@@ -92,16 +89,14 @@ ReverseProxyHandler sends request to backend.
 ForwardProxyHandler makes external web requests.
 
 go
-Copy
-Edit
+
 proxy.ReverseProxyHandler(ctx)
 proxy.ForwardProxyHandler(ctx)
 🔄 Algorithm Module
 Implements round-robin backend selection:
 
 go
-Copy
-Edit
+
 healthy := healthChecker.GetHealthyBackends()
 backend := healthy[index % len(healthy)]
 🔥 Firewall Module
@@ -114,9 +109,7 @@ Only healthy servers are used for routing.
 📊 Metrics Module
 Exposes backend call counts using Prometheus:
 
-txt
-Copy
-Edit
+
 backend_requests_total{backend_id="1", path="/reverse"} 24
 🧱 Admin API
 Fiber server on port 9090, modular routes defined in:
@@ -128,9 +121,7 @@ internal/admin/
 🚀 HTTP Client Pool
 Uses Go's sync.Pool for fasthttp client reuse:
 
-go
-Copy
-Edit
+
 var clientPool = sync.Pool{
   New: func() interface{} {
     return &fasthttp.Client{}
@@ -139,16 +130,13 @@ var clientPool = sync.Pool{
 📜 Logger (Zap)
 Structured logs with levels like Info, Warn, Error.
 
-go
-Copy
-Edit
+
 log.Info("Started", zap.String("service", "LeanBalancer"))
 📊 Prometheus Setup
 Sample prometheus.yml:
 
 yaml
-Copy
-Edit
+
 scrape_configs:
   - job_name: 'leanbalancer'
     static_configs:
@@ -160,8 +148,7 @@ Access Prometheus at:
 Run this for mock servers:
 
 bash
-Copy
-Edit
+
 BACKEND_ID=1 BACKEND_PORT=9001 go run examples/backend.go
 Responds to:
 
@@ -174,9 +161,7 @@ Responds to:
 🧼 Graceful Shutdown
 Handles OS signals, cleans up:
 
-go
-Copy
-Edit
+
 os.Signal, context.WithTimeout, server.Shutdown()
 No dropped connections during exit.
 
@@ -201,8 +186,7 @@ Feel free to fork, improve, or open issues.
 EOF
 
 yaml
-Copy
-Edit
+
 
 ---
 
