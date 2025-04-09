@@ -59,22 +59,22 @@ leanbalancer/
 git clone https://github.com/siddhu949/leanbalancer.git
 cd leanbalancer
 ```
-##2️⃣ Install Dependencies
+2️⃣ Install Dependencies
 ```bash
 go mod tidy
 ```
-##3️⃣ Start Sample Backends
+3️⃣ Start Sample Backends
 ```bash
 
 BACKEND_ID=1 BACKEND_PORT=9001 go run examples/backend.go
 BACKEND_ID=2 BACKEND_PORT=9002 go run examples/backend.go
 BACKEND_ID=3 BACKEND_PORT=9003 go run examples/backend.go
 ```
-##4️⃣ Start LeanBalancer
+4️⃣ Start LeanBalancer
 ```bash
 go run cmd/main.go
 ```
-##🌐 Available Routes
+🌐 Available Routes
 Route	Method	Description
 ```
 /	GET	Load balancer health/status
@@ -84,7 +84,7 @@ Route	Method	Description
 /metrics	GET	Prometheus metrics
 /admin/...	GET	Admin API (via Fiber)
 ```
-##🧩 Module-wise Explanation
+🧩 Module-wise Explanation
 🔁 Proxy Module
 Handles reverse and forward proxy logic.
 
@@ -97,7 +97,7 @@ go
 proxy.ReverseProxyHandler(ctx)
 proxy.ForwardProxyHandler(ctx)
 ```
-##🔄 Algorithm Module
+🔄 Algorithm Module
 Implements round-robin backend selection:
 ```
 go
@@ -105,20 +105,20 @@ go
 healthy := healthChecker.GetHealthyBackends()
 backend := healthy[index % len(healthy)]
 ```
-##🔥 Firewall Module
+🔥 Firewall Module
 Prevents abuse via IP-based rate limiting using sync.Map.
 
 🩺 Health Checker
 Periodically checks all backends using /health endpoint.
 Only healthy servers are used for routing.
 
-##📊 Metrics Module
+📊 Metrics Module
 Exposes backend call counts using Prometheus:
 
 ```
 backend_requests_total{backend_id="1", path="/reverse"} 24
 ```
-##🧱 Admin API
+🧱 Admin API
 Fiber server on port 9090, modular routes defined in:
 
 api/v1/
@@ -135,13 +135,13 @@ var clientPool = sync.Pool{
   },
 }
 ```
-##📜 Logger (Zap)
+📜 Logger (Zap)
 Structured logs with levels like Info, Warn, Error.
 
 ```
 log.Info("Started", zap.String("service", "LeanBalancer"))
 ```
-##📊 Prometheus Setup
+📊 Prometheus Setup
 Sample prometheus.yml:
 
 yaml
@@ -151,12 +151,12 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:8080']
 ```
-##Access Prometheus at:
+Access Prometheus at:
 ```
 👉 http://localhost:9090
 ```
 
-#🧪 Sample Backend Setup
+🧪 Sample Backend Setup
 Run this for mock servers:
 
 bash
@@ -170,30 +170,30 @@ Responds to:
 
 /health
 ```
-##🧼 Graceful Shutdown
+🧼 Graceful Shutdown
 Handles OS signals, cleans up:
 ```
 
 os.Signal, context.WithTimeout, server.Shutdown()
 No dropped connections during exit.
 ```
-##🔮 Coming Soon
-###🤖 ML-based Backend Scoring
+🔮 Coming Soon
+🤖 ML-based Backend Scoring
 
-###🔐 Secured Admin Dashboard
+🔐 Secured Admin Dashboard
 
-###⚙️ Docker & Docker Compose Support
+⚙️ Docker & Docker Compose Support
 
-###🌐 TLS (HTTPS) Reverse Proxy
+🌐 TLS (HTTPS) Reverse Proxy
 
-###📉 Real-time Rate Monitor
+📉 Real-time Rate Monitor
 
-##🧾 License
+🧾 License
 ```
 MIT License © 2025 @siddhu949
 ```
 
-##🤝 Contribute
+🤝 Contribute
 Pull requests and suggestions are welcome!
 Feel free to fork, improve, or open issues.
 ```
