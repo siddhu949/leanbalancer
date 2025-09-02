@@ -197,3 +197,10 @@ MIT License © 2025 @siddhu949
 Pull requests and suggestions are welcome!
 Feel free to fork, improve, or open issues.
 ```
+grafana:
+grafana>windows>program files>downloads>grafana>bin>grafana.exe
+prometheus:
+download zip
+bin .\prometheus.exe --config.file=prometheus.yml
+apache bench marks:zip
+.\ab.exe -n 100 -c 10 http://localhost:8080/reverse
