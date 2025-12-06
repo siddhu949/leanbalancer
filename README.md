@@ -2,7 +2,8 @@
 
 ## Overview
 This project is a **memory-efficient load balancer** with forward and reverse proxy capabilities, designed to handle **heavy traffic** efficiently, similar to **AWS ELB**. The implementation is done using **Golang** with a focus on **performance, security, and scalability**. The primary focus is on **minimizing memory overhead** while maintaining high efficiency.
-
+programming language 
+golang
 ## Features
 - **Forward & Reverse Proxy Support**
 - **Optimized Memory Management**
